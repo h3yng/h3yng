@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://d3x.foo
-
-# Sitemaps
-Sitemap: https://d3x.foo/sitemap.xml

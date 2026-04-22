@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <rect x="24" y="24" width="208" height="208" rx="28" fill="#0A0A0A"/>
-  <!-- minimalist cat head: ears + head -->
-  <path d="M88 96 L104 56 L116 92 Z" fill="#FFFFFF"/>
-  <path d="M168 96 L152 56 L140 92 Z" fill="#FFFFFF"/>
-  <circle cx="128" cy="144" r="60" fill="#FFFFFF"/>
-</svg>
-
