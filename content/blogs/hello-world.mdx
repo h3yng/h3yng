@@ -1,0 +1,29 @@
+---
+title: "Why I Chose Go for CLI Development"
+date: "2026-03-14"
+readTime: "4 min read"
+summary: "Exploring the massive benefits of static binaries wrapped in npm."
+---
+
+When evaluating languages for our cross-platform command line utilities, several options emerged: Node.js, Rust, and Go. Node suffers from heavy bundle sizes, Rust introduces compilation overhead, but Go hits the perfect middle ground.
+
+Its native static compilation to almost any architecture provides end-users with simple, dependency-free binaries. We found that the `os/exec` patterns made bridging terminal environments trivial.
+
+If you are building dev tools today, ship them as Go binaries wrapped in NPM packages—it maximizes reach while minimizing friction.
+
+```go title="main.go"
+package main
+
+import (
+    "fmt"
+    "os/exec"
+)
+
+func main() {
+    out, err := exec.Command("echo", "Hello, compiled world!").Output()
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(string(out))
+}
+```
