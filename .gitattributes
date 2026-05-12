@@ -1,0 +1,8 @@
+*.ts linguist-detectable=false
+*.vue linguist-detectable=false
+*.vim linguist-detectable=false
+*.jpg linguist-detectable=false
+*.jpeg linguist-detectable=false
+*.png linguist-detectable=false
+*.svg linguist-detectable=false
+
