@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HEYNG</title>
+    <meta name="description" content="A simple one-page portfolio with a short bio and project groups." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main id="home">
+        <section class="hero">
+          <h1> HEYNG    </h1>
+          <p class="intro">
+            I build simple things, like clean interfaces and practical tools.
+            Below is a plain list of project groups and the work inside them.
+          </p>
+        </section>
+
+        <section class="work" id="work">
+          <h2>Projects/Work</h2>
+
+          <ol class="category-list" id="projects-container"></ol>
+        </section>
+      </main>
+
+      <footer class="topbar">
+        <a class="status" href="https://example.com" target="_blank" rel="noreferrer">< LEFT</a>
+        <a class="status" href="https://example.com" target="_blank" rel="noreferrer">RIGHT ></a>
+      </footer>
+    </div>
+
+    <script>
+      async function loadProjects() {
+        try {
+          const response = await fetch('data.json');
+          const data = await response.json();
+          const container = document.getElementById('projects-container');
+          
+          data.categories.forEach(category => {
+            const li = document.createElement('li');
+            const details = document.createElement('details');
+            details.open = true;
+            
+            const summary = document.createElement('summary');
+            summary.innerHTML = `${category.name} <span class="dropdown-mark" aria-hidden="true">▾</span>`;
+            
+            const ul = document.createElement('ul');
+            ul.className = 'project-list';
+            
+            category.projects.forEach(project => {
+              const projectLi = document.createElement('li');
+              projectLi.id = project.id;
+              const projectLink = document.createElement('a');
+              const href = project.href || project.herf || `#${project.id}`;
+              projectLink.href = href;
+              projectLink.textContent = project.title;
+
+              const projectDescription = document.createElement('span');
+              projectDescription.textContent = project.description;
+
+              projectLi.appendChild(projectLink);
+              projectLi.appendChild(document.createTextNode(': '));
+              projectLi.appendChild(projectDescription);
+              ul.appendChild(projectLi);
+            });
+            
+            details.appendChild(summary);
+            details.appendChild(ul);
+            li.appendChild(details);
+            container.appendChild(li);
+          });
+        } catch (error) {
+          console.error('Error loading projects:', error);
+        }
+      }
+      
+      loadProjects();
+    </script>
+  </body>
+</html>

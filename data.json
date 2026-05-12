@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "name": "Currently working on",
+      "projects": [
+        {
+          "id": "manhunt",
+          "title": "manhunt",
+          "href": "https://github.com/h3yng/manhunt",
+          "description": "[WIP] all in one tool similar to raycast for linux"
+        },
+        {
+          "id": "drb99",
+          "title": "drb99",
+          "href": "https://github.com/h3yng/drb99",
+          "description": "Simple binary distribution tooling."
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "projects": [
+        {
+          "id": "sweet-commit",
+          "title": "sweet-commit",
+          "href": "https://github.com/h3yng/sweet-commit",
+          "description": "Cleaner git commit messages."
+        },
+        {
+          "id": "tabby",
+          "title": "tabby",
+          "href": "https://github.com/h3yng/tabby",
+          "description": "API stress testing with with random data"
+        },
+        {
+          "id": "wimg",
+          "title": "wimg",
+          "href": "https://github.com/h3yng/wimg",
+          "description": "Lightweight image utility."
+        }
+      ]
+    },
+    {
+      "name": "Personal Dev Env",
+      "projects": [
+        {
+          "id": "dev-env",
+          "title": "dev-env",
+          "href": "https://github.com/h3yng/dev-env",
+          "description": "NixOS and flakes/directory"
+        },
+        {
+          "id": "nvim",
+          "title": "nvim",
+          "href": "https://github.com/h3yng/nvim",
+          "description": ":q"
+        },
+        {
+          "id": "keyboard",
+          "title": "keyboard",
+          "href": "https://github.com/h3yng/keyboard",
+          "description": "efficent 34 key GRAPHITE layout [ferris_sweep]"
+        }
+      ]
+    }
+  ]
+}
