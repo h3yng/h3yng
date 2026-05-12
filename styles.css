@@ -100,7 +100,7 @@ a:not(.brand):hover {
   content: "";
   position: absolute;
   inset: -160px -200px 40% -200px;
-  background-image: url('grainy.jpg');
+  background-image: url('assets/grainy.jpg');
   background-size: cover;
   background-position: center 20%;
   opacity: 0.35;
