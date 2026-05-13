@@ -41,6 +41,23 @@
       ]
     },
     {
+      "name": "Infra",
+      "projects": [
+        {
+          "id": "Git self-hosted",
+          "title": "Git self-hosted",
+          "href": "https://git.heyng.dev/",
+          "description": "A self hosted git"
+        },
+        {
+          "id": "wireguard tunnel",
+          "title": "wireguard tunnel",
+          "href": "https://github.com/h3yng/wireguard-home-tunnel",
+          "description": "wireguard tunnel for accesing the home network"
+        }
+      ]
+    },
+    {
       "name": "Personal Dev Env",
       "projects": [
         {
