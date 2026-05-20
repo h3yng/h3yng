@@ -47,7 +47,7 @@
           "id": "Git self-hosted",
           "title": "Git self-hosted",
           "href": "https://git.heyng.dev/heyng?tab=activity",
-          "description": "A self hosted git"
+          "description": "[Under Maintainance] moving to Forgejo" 
         },
         {
           "id": "wireguard tunnel",
