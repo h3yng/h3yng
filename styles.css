@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --bg: #0d0c0c;
   --text: #c5c9c5;
   --muted: #737c73;
@@ -7,6 +7,7 @@
   --heading: #c4b28a;
   --link: #8a9a7b;
   --border: #393836;
+  --card-bg: rgba(255, 255, 255, 0.025);
 }
 * {
   box-sizing: border-box;
@@ -36,14 +37,14 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 1; /* sits above the hero glow */
+  z-index: 1;
   background-image: linear-gradient(rgba(57, 56, 54, 0.45) 1px, transparent 1px),
     linear-gradient(90deg, rgba(57, 56, 54, 0.45) 1px, transparent 1px);
   background-size: 24px 24px;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 72%);
 }
 .page-shell {
-  width: min(1100px, calc(100% - 24px));
+  width: min(720px, calc(100% - 24px));
   margin: 0;
   padding: 16px 20px 20px;
   text-align: center;
@@ -51,53 +52,42 @@ body::before {
   flex-direction: column;
   align-items: center;
 }
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-  padding: 6px 2px;
-  width: 100%;
-}
-footer.topbar {
-  justify-content: center;
-  gap: 24px;
-  margin-top: 40px;
-  margin-bottom: 0;
-}
-.brand {
-  font-family: "Silkscreen", monospace;
-  font-size: 1rem;
-  color: var(--heading);
-  text-decoration: none;
-  display: block;
-  visibility: visible;
-}
-.status {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-/* Global link styles (exclude .brand so header remains emphasized) */
-a:not(.brand) {
+/* ── Links ── */
+a {
   color: var(--link);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
-a:not(.brand):visited {
+a:visited {
   color: var(--link);
 }
-a:not(.brand):hover {
+a:hover {
   color: var(--heading);
 }
-
-/* ── Hero + grainy background ── */
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+/* ── Fade-in ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.5s ease forwards;
+}
+.fade-in:nth-child(2) { animation-delay: 0.08s; }
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ── Hero ── */
 .hero {
   position: relative;
   isolation: isolate;
-  padding: 10px 0 12px;
+  padding: 10px 0 16px;
   max-width: 760px;
   text-align: center;
   width: 100%;
@@ -117,121 +107,100 @@ a:not(.brand):hover {
   -webkit-mask-image:
     radial-gradient(ellipse 70% 100% at 50% 0%, black 20%, transparent 80%);
 }
-
-.section-label,
-summary {
-  color: var(--accent);
-  font-family: "Silkscreen", monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 0.76rem;
-}
-.hero h1,
-.work h2,
-summary,
-.project a {
+.hero h1 {
   margin: 0;
   font-family: "Silkscreen", monospace;
   letter-spacing: -0.03em;
   line-height: 1.15;
-}
-.hero h1 {
   max-width: 12ch;
   font-size: clamp(2.2rem, 7vw, 4rem);
   color: var(--heading);
 }
-.intro,
-.project span {
+.intro {
   color: var(--muted);
   line-height: 1.55;
   font-size: 0.96rem;
-}
-.intro {
   max-width: 54ch;
-  margin: 14px 0 0;
+  margin: 12px 0 0;
 }
-.work {
-  padding: 4px 0 0;
-  width: 100%;
-}
-.work h2 {
-  font-size: clamp(1.4rem, 4vw, 2rem);
-  margin-bottom: 10px;
-  color: var(--heading);
-}
-.category-list {
-  margin: 0;
-  padding-left: 18px;
-  display: inline-block;
-  text-align: left;
-  gap: 10px;
-}
-.category-list > li {
-  padding-left: 6px;
-}
-details {
-  padding: 0;
-}
-summary {
-  cursor: pointer;
-  list-style: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent);
-}
-summary::-webkit-details-marker {
-  display: none;
-}
-.dropdown-mark {
-  font-size: 0.8em;
-  transform: translateY(1px);
-}
-.project-list {
+.hero-links {
   margin: 10px 0 0;
-  padding-left: 24px;
-  display: grid;
-  gap: 8px;
+  display: flex;
+  justify-content: center;
 }
-.project-list li {
-  padding: 0;
+.hero-links a {
+  color: var(--muted);
+  text-decoration: none;
+  display: inline-flex;
+  transition: color 0.2s;
 }
-.project a {
-  display: inline-block;
-  color: var(--link);
-  font-size: 0.92rem;
-  margin-bottom: 2px;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-.project a:hover {
+.hero-links a:hover {
   color: var(--heading);
 }
-.project-list li::marker {
+.icon {
+  display: block;
+}
+/* ── Project list ── */
+.project-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.project {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.project:hover {
+  background: var(--card-bg);
+}
+.project-title {
+  font-family: "Silkscreen", monospace;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.project-desc {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+/* ── Error ── */
+.error-msg {
+  color: #b56b6b;
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+/* ── Footer ── */
+.site-footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 28px;
+  font-size: 0.82rem;
   color: var(--muted);
 }
-details[open] .dropdown-mark {
-  transform: translateY(1px) rotate(180deg);
-}
+/* ── Mobile ── */
 @media (max-width: 780px) {
   .hero {
     padding: 6px 0 12px;
   }
   .hero::before {
-    inset: -100px calc(-24px - constant(safe-area-inset-right)) 40% calc(-24px - constant(safe-area-inset-left)); /* tighter bleed on mobile, same bottom cutoff */
+    inset: -100px calc(-24px - constant(safe-area-inset-right)) 40% calc(-24px - constant(safe-area-inset-left));
     inset: -100px calc(-24px - env(safe-area-inset-right)) 40% calc(-24px - env(safe-area-inset-left));
   }
-  .topbar {
-    align-items: flex-start;
-    flex-direction: column;
-  }
   .page-shell {
-    width: min(100% - 18px, 1100px);
+    width: min(100% - 18px, 720px);
     padding-top: 12px;
   }
-  .category-list,
-  .project-list {
-    padding-left: 16px;
+  .project {
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 10px;
   }
 }

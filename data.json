@@ -1,84 +1,34 @@
 {
-  "categories": [
+  "projects": [
     {
-      "name": "Currently working on",
-      "projects": [
-        {
-          "id": "manhunt",
-          "title": "manhunt",
-          "href": "https://github.com/h3yng/manhunt",
-          "description": "[WIP] all in one tool similar to raycast for linux"
-        },
-        {
-          "id": "drb99",
-          "title": "drb99",
-          "href": "https://github.com/h3yng/drb99",
-          "description": "Simple binary distribution tooling."
-        }
-      ]
+      "id": "manhunt",
+      "title": "manhunt",
+      "href": "https://github.com/h3yng/manhunt",
+      "description": "[WIP] all in one tool similar to raycast for linux"
     },
     {
-      "name": "Tools",
-      "projects": [
-        {
-          "id": "sweet-commit",
-          "title": "sweet-commit",
-          "href": "https://github.com/h3yng/sweet-commit",
-          "description": "Cleaner git commit messages."
-        },
-        {
-          "id": "tabby",
-          "title": "tabby",
-          "href": "https://github.com/h3yng/tabby",
-          "description": "API stress testing with with random data"
-        },
-        {
-          "id": "wimg",
-          "title": "wimg",
-          "href": "https://github.com/h3yng/wimg",
-          "description": "Lightweight image utility."
-        }
-      ]
+      "id": "drb99",
+      "title": "drb99",
+      "href": "https://github.com/h3yng/drb99",
+      "description": "Simple binary distribution tooling."
     },
     {
-      "name": "Infra",
-      "projects": [
-        {
-          "id": "Git self-hosted",
-          "title": "Git self-hosted",
-          "href": "https://git.heyng.dev/heyng?tab=activity",
-          "description": "[Under Maintainance] moving to Forgejo" 
-        },
-        {
-          "id": "wireguard tunnel",
-          "title": "wireguard tunnel",
-          "href": "https://github.com/h3yng/wireguard-home-tunnel",
-          "description": "wireguard tunnel for accesing the home network"
-        }
-      ]
+      "id": "sweet-commit",
+      "title": "sweet-commit",
+      "href": "https://github.com/h3yng/sweet-commit",
+      "description": "Cleaner git commit messages."
     },
     {
-      "name": "Personal Dev Env",
-      "projects": [
-        {
-          "id": "dev-env",
-          "title": "dev-env",
-          "href": "https://github.com/h3yng/dev-env",
-          "description": "NixOS and flakes/directory"
-        },
-        {
-          "id": "nvim",
-          "title": "nvim",
-          "href": "https://github.com/h3yng/nvim",
-          "description": ":q"
-        },
-        {
-          "id": "keyboard",
-          "title": "keyboard",
-          "href": "https://github.com/h3yng/keyboard",
-          "description": "efficient 34 key GRAPHITE layout [ferris_sweep]"
-        }
-      ]
+      "id": "tabby",
+      "title": "tabby",
+      "href": "https://github.com/h3yng/tabby",
+      "description": "API stress testing with random data"
+    },
+    {
+      "id": "wimg",
+      "title": "wimg",
+      "href": "https://github.com/h3yng/wimg",
+      "description": "Lightweight image utility."
     }
   ]
 }
