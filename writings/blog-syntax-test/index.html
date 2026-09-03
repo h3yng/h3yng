@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog Syntax Test — HEYNG</title>
+<meta name="description" content="Blog Syntax Test" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+<meta name="theme-color" content="#0d0c0c" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="page-shell">
+<main>
+<article class="post-full">
+<header class="post-full-header">
+<a href="/writings/" class="back-link">&larr; All posts</a>
+<time class="post-date" datetime="2026-09-03">September 3, 2026</time>
+<h1 class="post-title">Blog Syntax Test</h1>
+<div class="post-tags"><span class="tag">#testing</span><span class="tag">#markdown</span><span class="tag">#syntax</span></div>
+</header>
+<div class="post-content"><p>This post exercises <strong>bold text</strong>, <em>italic text</em>, and <strong><em>bold italic text</em></strong>.
+</p>
+<p>It also includes an <a href="https://example.com">example link</a> and an inline <code>const value = 42</code> code sample.
+</p>
+<h1>Heading One</h1>
+<h2>Heading Two</h2>
+<h3>Heading Three</h3>
+<p><img src="../../../assets/cathedral/sky.jpg" alt="A cathedral sky" />
+</p>
+<hr />
+<blockquote><p>This is a blockquote showing an important note.</p></blockquote>
+<ul><li>First unordered item</li>
+<li>Second unordered item</li>
+<li>Third unordered item</li>
+</ul>
+<ul><li class="task"><input type="checkbox" checked disabled /> Completed task</li>
+<li class="task"><input type="checkbox" disabled /> Incomplete task</li>
+</ul>
+<table><thead><tr><th>Feature</th><th>Supported</th></tr></thead><tbody><tr><td>Headings</td><td>Yes</td></tr><tr><td>Tables</td><td>Yes</td></tr><tr><td>Code</td><td>Yes</td></tr></tbody></table>
+<p><pre><code class="language-javascript">function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('reader'));</code></pre>
+</p>
+<h2>Copyable Syntax Reference</h2>
+<p>The following reference shows the Markdown syntax supported by this blog generator. Replace <code>[three backticks]</code> with three backticks when creating a fenced code block.
+</p>
+<p><pre><code class="language-text"># Heading One
+## Heading Two
+### Heading Three
+
+**bold**
+*italic*
+***bold italic***
+
+[link text](https://example.com)
+![image alt text](../../../assets/cathedral/sky.jpg)
+
+---
+
+&gt; Blockquote text
+
+- Unordered list item
+- Another list item
+
+- [x] Completed task
+- [ ] Incomplete task
+
+| Column One | Column Two |
+| --- | --- |
+| Value | Value |
+
+Inline `code`
+
+[three backticks]javascript
+console.log('fenced code');
+[three backticks]</code></pre>
+</p></div>
+</article>
+</main>
+<footer class="site-footer"><p><a href="/">&larr; Home</a></p></footer>
+</div>
+</body>
+</html>

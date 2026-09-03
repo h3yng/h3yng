@@ -4,31 +4,31 @@
       "id": "manhunt",
       "title": "manhunt",
       "href": "https://github.com/h3yng/manhunt",
-      "description": "[WIP] all in one tool similar to raycast for linux"
+      "description": "A lightweight Linux launcher for web search and bookmarks."
     },
     {
       "id": "drb99",
       "title": "drb99",
       "href": "https://github.com/h3yng/drb99",
-      "description": "Simple binary distribution tooling."
+      "description": "Generate release files for distributing binaries across multiple channels."
     },
     {
       "id": "sweet-commit",
       "title": "sweet-commit",
       "href": "https://github.com/h3yng/sweet-commit",
-      "description": "Cleaner git commit messages."
+      "description": "AI-assisted conventional commit messages from your staged changes."
     },
     {
       "id": "tabby",
       "title": "tabby",
       "href": "https://github.com/h3yng/tabby",
-      "description": "API stress testing with random data"
+      "description": "A terminal HTTP testing tool with stress loops and random data templates."
     },
     {
       "id": "wimg",
       "title": "wimg",
       "href": "https://github.com/h3yng/wimg",
-      "description": "Lightweight image utility."
+      "description": "A fast Go CLI for converting and compressing images."
     }
   ]
 }

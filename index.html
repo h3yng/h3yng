@@ -12,19 +12,16 @@
     <meta name="theme-color" content="#0d0c0c" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="page-shell">
       <main id="home">
-        <section class="hero fade-in">
+        <section class="hero">
           <h1>HEYNG</h1>
           <p class="intro">
-            I build simple things, like clean interfaces and practical tools.
+            I build things, like clean interfaces and practical tools.
           </p>
           <p class="hero-links">
             <a href="https://github.com/h3yng" aria-label="GitHub">
@@ -32,52 +29,80 @@
                 <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
               </svg>
             </a>
+            <a href="mailto:ng@heyng.dev" aria-label="Email ng@heyng.dev">
+              <span class="icon mail-icon" aria-hidden="true"></span>
+            </a>
           </p>
         </section>
 
-        <section class="work fade-in" id="work">
+        <section class="work" id="work">
+          <p class="work-header"><a href="work/" class="blog-link">work / project</a></p>
           <ul class="project-list" id="projects-container"></ul>
-          <div id="projects-error" class="error-msg" hidden>Failed to load projects.</div>
+        </section>
+
+        <section class="blog-preview" id="blog-preview">
+          <p class="blog-preview-header">
+            <a href="writings/" class="blog-link">writings</a>
+          </p>
+          <ul class="blog-list" id="blog-list"></ul>
         </section>
       </main>
 
-      <footer class="site-footer fade-in">
+      <footer class="site-footer">
       </footer>
     </div>
 
     <script>
       async function loadProjects() {
         try {
-          const response = await fetch('data.json');
-          if (!response.ok) throw new Error(response.statusText);
-          const data = await response.json();
-          const container = document.getElementById('projects-container');
-
-          data.projects.forEach(project => {
-            const li = document.createElement('li');
+          var res = await fetch('data.json');
+          if (!res.ok) return;
+          var data = await res.json();
+          var el = document.getElementById('projects-container');
+          data.projects.forEach(function(p) {
+            var li = document.createElement('li');
             li.className = 'project';
-            li.id = project.id;
-
-            const title = document.createElement('a');
-            title.href = project.href || `#${project.id}`;
-            title.textContent = project.title;
-            title.className = 'project-title';
-
-            const desc = document.createElement('span');
-            desc.className = 'project-desc';
-            desc.textContent = project.description;
-
-            li.appendChild(title);
-            li.appendChild(desc);
-            container.appendChild(li);
+            li.innerHTML = '<a href="' + (p.href || '#') + '" class="project-title">' + p.title + '</a>' +
+              '<span class="project-desc">' + p.description + '</span>';
+            el.appendChild(li);
           });
-        } catch (error) {
-          console.error('Error loading projects:', error);
-          document.getElementById('projects-error').hidden = false;
-        }
+        } catch(e) {}
+      }
+
+      async function loadBlogPreview() {
+        try {
+          var res = await fetch('/content/index.json');
+          if (!res.ok) return;
+          var index = await res.json();
+          var el = document.getElementById('blog-list');
+          var files = (index.blog || []).slice(0, 3);
+
+          for (var i = 0; i < files.length; i++) {
+            var mdRes = await fetch('/content/blog/' + files[i]);
+            if (!mdRes.ok) continue;
+            var md = await mdRes.text();
+            var m = md.match(/^---\n([\s\S]*?)\n---/);
+            if (!m) continue;
+            var fm = {};
+            m[1].split('\n').forEach(function(line) {
+              var c = line.indexOf(':');
+              if (c > 0) {
+                var k = line.slice(0, c).trim();
+                var v = line.slice(c + 1).trim();
+                if ((v[0] === '"' && v.slice(-1) === '"') || (v[0] === "'" && v.slice(-1) === "'")) v = v.slice(1, -1);
+                fm[k] = v;
+              }
+            });
+            var slug = fm.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            var li = document.createElement('li');
+            li.innerHTML = '<a href="writings/' + slug + '/" class="blog-title">' + fm.title + '</a>';
+            el.appendChild(li);
+          }
+        } catch(e) {}
       }
 
       loadProjects();
+      loadBlogPreview();
     </script>
   </body>
 </html>
